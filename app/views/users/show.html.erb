@@ -2,4 +2,6 @@
 <%= image_tag @user.image.url %>
 <p>生年月日: <%= @user.birthday.strftime("%Y年 %m月 %d日") %></p>
 <p>メールアドレス: <%= @user.email %></p>
-<%= link_to "プロフィールを編集", edit_user_path(@user.id) %>
+<% if @user == current_user %>
+  <%= link_to "プロフィールを編集", edit_user_path(@user.id) %>
+<% end %>

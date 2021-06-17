@@ -21,6 +21,7 @@ class FeedsController < ApplicationController
 
   # GET /feeds/1/edit
   def edit
+    redirect_to feeds_path unless @feed.user == current_user
   end
 
   # POST /feeds or /feeds.json
