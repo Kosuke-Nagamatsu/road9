@@ -9,6 +9,7 @@
   <strong>Content:</strong>
   <%= @feed.content %>
 </p>
+
 <% if @feed.user == current_user %>
   <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <% end %>

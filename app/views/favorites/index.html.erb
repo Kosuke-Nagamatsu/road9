@@ -1,0 +1,24 @@
+<h1>お気に入り一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Content</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= "#{favorite.user.name}さんの投稿" %></td>
+        <td><%= image_tag favorite.feed.image.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', feeds_path %>
