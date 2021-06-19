@@ -1,12 +1,14 @@
 body {
-  background-color: #f7f7f7;
+  // background-color: #f7f7f7;
+  background-color: rgb(250, 250, 250);
 }
 ul {
   list-style: none;
   padding: 0;
 }
-h1 {
-  font-size: 24px;
+.alert {
+  font-size: 20px;
+  text-align: center;
 }
 .flex-container {
   display: flex;

@@ -1,7 +1,7 @@
 <%= form_with(model: feed, local: true, url:choose_new_or_edit) do |form| %>
 <div class="flex-container container-margin">
   <ul class="list-group">
-    <% if @feed.image && @feed.image.url %>
+    <% if action_name == 'edit' %>
       <li class="list-group-item"><%= image_tag(@feed.image.url) %></li>
     <% end %>
     <li class="list-group-item"><%= form.label :写真 %>
