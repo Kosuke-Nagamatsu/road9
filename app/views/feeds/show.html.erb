@@ -1,16 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @feed.image.url %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @feed.content %>
-</p>
-
-<% if @feed.user == current_user %>
-  <%= link_to 'Edit', edit_feed_path(@feed) %> |
-<% end %>
-<%= link_to 'Back', feeds_path %>
+<h1 class="alert alert-info" role="alert">詳細ページ</h1>
+<div class="flex-container container-margin">
+  <ul class="list-group">
+    <li class="list-group-item"><%= image_tag @feed.image.url %></li>
+  <li class="list-group-item"><strong>本文:　</strong>
+  <%= @feed.content %></li>
+</div>

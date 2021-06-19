@@ -4,22 +4,66 @@
     <title>ImageShareApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <header class="container-fluid fixed">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img src="/assets/logo.png" alt="font-cool" border="0">
+        </a>
+      </div>
+      <div>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class=""><%= link_to feeds_path, class: 'btn btn-default btn-lg' do %>
+        <i class="glyphicon glyphicon-home"></i>
+        <span></span>
+        <% end %></li>
+        <li role="presentation" class=""><%= link_to new_feed_path, class: 'btn btn-default btn-lg' do %>
+        <i class="glyphicon glyphicon-share"></i>
+        <span></span>
+        <% end %></li>
+        <li role="presentation" class=""><%= link_to favorites_path, class: 'btn btn-default btn-lg' do %>
+        <i class="glyphicon glyphicon-heart-empty"></i>
+        <span></span>
+        <% end %></li>
+
+        <li class="dropdown">
+          <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="glyphicon glyphicon-user"></i>
+            <span class="caret"></span>
+          </button>
+          <% if logged_in? %>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          </ul>
+        <% else %>
+        <!-- <li class="dropdown">
+          <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="glyphicon glyphicon-user"></i>
+            <span class="caret"></span>
+          </button> -->
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><%= link_to "サインアップ", new_user_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "ログイン", new_session_path %></li>
+          </ul>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+    </header>
+    <div class="container-fluid">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+      <footer>
+      </footer>
+    </div>
   </body>
 </html>

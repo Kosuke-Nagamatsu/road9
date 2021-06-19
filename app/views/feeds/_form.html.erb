@@ -1,17 +1,15 @@
 <%= form_with(model: feed, local: true, url:choose_new_or_edit) do |form| %>
-  <div class="field">
-    <%= form.label :image %>
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-    <%= form.file_field :image %>
+<div class="flex-container container-margin">
+  <ul class="list-group">
+    <% if @feed.image && @feed.image.url %>
+      <li class="list-group-item"><%= image_tag(@feed.image.url) %></li>
+    <% end %>
+    <li class="list-group-item"><%= form.label :写真 %>
+    <%= form.file_field :image %></li>
     <%= form.hidden_field :image_cache %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <li class="list-group-item"><%= form.label :本文 %>
+    <%= form.text_area :content, class: 'input-field' %></li>
+    <li class="list-group-item"><%= form.submit "投稿する", class: 'input-field' %></li>
+  </ul>
+</div>
 <% end %>

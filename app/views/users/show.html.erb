@@ -1,9 +1,13 @@
-<h1><%= @user.name %>のページ</h1>
-<% if @user.image.url %>
-  <%= image_tag @user.image.url %>
-<% end %>
-  <p>生年月日: <%= @user.birthday.strftime("%Y年 %m月 %d日") %></p>
-  <p>メールアドレス: <%= @user.email %></p>
-  <% if @user == current_user %>
-    <%= link_to "プロフィールを編集", edit_user_path(@user.id) %>
-<% end %>
+<h1 class="alert alert-info" role="alert"><%= @user.name %>さんのプロフィール</h1>
+<div class="flex-container container-margin">
+  <ul class="list-group">
+    <% if @user.image.url %>
+      <li class="list-group-item"><%= image_tag @user.image.url, class: 'img-circle user-image' %></li>
+    <% end %>
+    <li class="list-group-item">生年月日:  <%= @user.birthday.strftime("%Y年 %m月 %d日") %></li>
+    <li class="list-group-item">メールアドレス:  <%= @user.email %></li>
+    <% if @user == current_user %>
+    <li class="list-group-item"><%= link_to "プロフィールを編集", edit_user_path(@user.id) %></li>
+    <% end %>
+  </ul>
+</div>

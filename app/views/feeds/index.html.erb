@@ -1,42 +1,34 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Feeds</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>写真</th>
-      <th>本文</th>
-      <th colspan="8"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="flex-container">
+  <div class="top-content container-margin">
     <% @feeds.each do |feed| %>
-      <tr>
-        <td><%= "#{feed.user.name}さんの投稿" %></td>
-        <td><%= image_tag feed.image.url %></td>
-        <td><%= feed.content %></td>
-        <td><%= link_to 'Show', feed %></td>
-
+      <ul>
+        <li><%= image_tag("#{feed.user.image.url}", size: '40x40', class: 'img-circle user-icon') %><%= "#{feed.user.name}さんの投稿" %></li>
+        <li><%= link_to image_tag("#{feed.image.url}"), feed_path(feed) %></li>
         <% unless feed.user_id == current_user.id %>
           <% if feed.favorites.present? %>
-            <td><%= link_to 'お気に入り解除する', favorite_path(id: feed.favorites.ids), method: :delete, class: 'btn btn-danger' %></td>
+            <li><%= link_to favorite_path(id: feed.favorites.ids), method: :delete, class: 'btn btn-default btn-sm' do %>
+            <i class="glyphicon glyphicon-heart"></i>
+            <span></span>
+            <% end %></li>
           <% else %>
-            <td><%= link_to 'お気に入りする', favorites_path(feed_id: feed.id), method: :post, class: 'btn btn-primary' %></td>
+            <li><%= link_to favorites_path(feed_id: feed.id), method: :post, class: 'btn btn-default btn-sm' do %>
+            <i class="glyphicon glyphicon-heart-empty"></i>
+            <span></span>
+            <% end %></li>
           <% end %>
         <% end %>
-
         <% if feed.user == current_user %>
-          <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-          <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <li><%= link_to edit_feed_path(feed), class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-edit"></i>
+          <span></span>
+          <% end %>
+          <%= link_to feed, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-trash"></i>
+          <span></span>
+          <% end %></li>
         <% end %>
-      </tr>
+        <li><%= feed.content %></li>
+      </ul>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Feed', new_feed_path %>
+  </div>
+</div>
