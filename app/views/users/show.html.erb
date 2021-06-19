@@ -1,9 +1,8 @@
 <h1 class="alert alert-info" role="alert"><%= @user.name %>さんのプロフィール</h1>
 <div class="flex-container container-margin">
   <ul class="list-group">
-    <% if @user.image.url %>
       <li class="list-group-item"><%= image_tag @user.image.url, class: 'img-circle user-image' %></li>
-    <% end %>
+
     <li class="list-group-item">生年月日:  <%= @user.birthday.strftime("%Y年 %m月 %d日") %></li>
     <li class="list-group-item">メールアドレス:  <%= @user.email %></li>
     <% if @user == current_user %>

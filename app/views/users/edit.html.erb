@@ -11,9 +11,7 @@
 <% end %>
 <div class="flex-container container-margin">
 <ul class="list-group">
-  <% if @user.image.url %>
     <li class="list-group-item"><%= image_tag @user.image.url, class: 'img-circle user-image' %></li>
-  <% end %>
 </ul></div>
 <%= form_with(model: @user, local: true) do |f| %>
 <div class="flex-container">

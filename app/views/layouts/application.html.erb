@@ -42,11 +42,6 @@
             <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
           </ul>
         <% else %>
-        <!-- <li class="dropdown">
-          <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <i class="glyphicon glyphicon-user"></i>
-            <span class="caret"></span>
-          </button> -->
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li><%= link_to "サインアップ", new_user_path %></li>
             <li role="separator" class="divider"></li>
