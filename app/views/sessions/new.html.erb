@@ -2,11 +2,11 @@
 <div class="flex-container container-margin">
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <ul class="list-group">
-  <li class="list-group-item"><%= f.label :email %>
-  <%= f.email_field :email, class: 'input-field' %></li>
-  <li class="list-group-item"><%= f.label :password %>
-  <%= f.password_field :password, class: 'input-field' %></li>
-  <li class="list-group-item"><%= f.submit "Log in", class: 'input-field' %></li>
+    <li class="list-group-item"><%= f.label :email %>
+      <%= f.email_field :email, class: 'input-field' %></li>
+    <li class="list-group-item"><%= f.label :password %>
+      <%= f.password_field :password, class: 'input-field' %></li>
+    <li class="list-group-item"><%= f.submit "Log in", class: 'input-field' %></li>
   </ul>
 <% end %>
 </div>

@@ -1,9 +1,8 @@
 <h1 class="alert alert-info" role="alert">お気に入り一覧</h1>
 <div class="flex-container container-margin favorite-content">
   <% @favorites.each do |favorite| %>
-  <ul class="list-group">
-    <li class="list-group-item"><%= image_tag favorite.feed.image.url %></li>
-  </ul>
+    <ul class="list-group">
+      <li class="list-group-item"><%= image_tag favorite.feed.image.url %></li>
+    </ul>
   <% end %>
 </div>
-<br>

@@ -1,11 +1,11 @@
 <h1 class="alert alert-info" role="alert"><%= @user.name %>さんのプロフィール</h1>
 <div class="flex-container container-margin">
   <ul class="list-group">
-      <li class="list-group-item"><%= image_tag @user.image.url, class: 'img-circle user-image' %></li>
+    <li class="list-group-item"><%= image_tag @user.image.url, class: 'img-circle user-image' %></li>
     <li class="list-group-item">生年月日:  <%= @user.birthday.strftime("%Y年 %m月 %d日") %></li>
     <li class="list-group-item">メールアドレス:  <%= @user.email %></li>
     <% if @user == current_user %>
-    <li class="list-group-item"><%= link_to "プロフィールを編集", edit_user_path(@user.id) %></li>
+      <li class="list-group-item"><%= link_to "プロフィールを編集", edit_user_path(@user.id) %></li>
     <% end %>
   </ul>
 </div>

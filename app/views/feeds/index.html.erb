@@ -5,30 +5,28 @@
         <li><%= image_tag("#{feed.user.image.url}", size: '40x40', class: 'img-circle user-icon') %><%= "#{feed.user.name}" %></li>
         <li><%= link_to image_tag("#{feed.image.url}"), feed_path(feed) %></li>
         <% unless feed.user_id == current_user.id %>
-          <% if feed.favorites.present? %>
-            <li><%= link_to favorite_path(id: feed.favorites.ids), method: :delete, class: 'btn btn-default btn-sm' do %>
+        <% if feed.favorites.present? %>
+          <li><%= link_to favorite_path(id: feed.favorites.ids), method: :delete, class: 'btn btn-default btn-sm' do %>
             <i class="glyphicon glyphicon-heart"></i>
             <span></span>
             <% end %></li>
-          <% else %>
-            <li><%= link_to favorites_path(feed_id: feed.id), method: :post, class: 'btn btn-default btn-sm' do %>
-            <i class="glyphicon glyphicon-heart-empty"></i>
-            <span></span>
-            <% end %></li>
-          <% end %>
-        <% end %>
-        <% if feed.user == current_user %>
-          <li><%= link_to edit_feed_path(feed), class: 'btn btn-default btn-sm' do %>
-          <i class="glyphicon glyphicon-edit"></i>
-          <span></span>
-          <% end %>
-          <%= link_to feed, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' do %>
-          <i class="glyphicon glyphicon-trash"></i>
+        <% else %>
+          <li><%= link_to favorites_path(feed_id: feed.id), method: :post, class: 'btn btn-default btn-sm' do %>
+          <i class="glyphicon glyphicon-heart-empty"></i>
           <span></span>
           <% end %></li>
         <% end %>
-        <li><%= feed.content %></li>
-      </ul>
+    <% end %>
+    <% if feed.user == current_user %>
+      <li><%= link_to edit_feed_path(feed), class: 'btn btn-default btn-sm' do %>
+        <i class="glyphicon glyphicon-edit"></i>
+        <span></span><% end %>
+        <%= link_to feed, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm' do %>
+        <i class="glyphicon glyphicon-trash"></i>
+        <span></span><% end %></li>
+      <% end %>
+      <li><%= feed.content %></li>
+    </ul>
     <% end %>
   </div>
 </div>

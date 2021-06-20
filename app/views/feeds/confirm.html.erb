@@ -1,17 +1,17 @@
 <h1 class="alert alert-info" role="alert">確認画面</h1>
-    <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-    <div class="flex-container container-margin">
+<%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
+  <div class="flex-container container-margin">
     <ul class="list-group">
-    <li class="list-group-item"><%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %></li>
-    <li class="list-group-item"><p>本文:　<%= @feed.content %></p></li>
-    <%= form.hidden_field :image_cache %>
-    <%= form.hidden_field :content %>
-    <li class="list-group-item"><%= form.submit "投稿する", class: 'input-field' %></li>
-    <% end %>
-    <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
-    <%= form.hidden_field :image_cache %>
-    <%= form.hidden_field :content %>
-    <li class="list-group-item"><%= form.submit "戻る", name: "back", class: 'input-field' %></li>
-    </ul>
-    </div>
-    <% end %>
+      <li class="list-group-item"><%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %></li>
+      <li class="list-group-item"><p>本文:<%= @feed.content %></p></li>
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :content %>
+      <li class="list-group-item"><%= form.submit "投稿する", class: 'input-field' %></li>
+<% end %>
+<%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <li class="list-group-item"><%= form.submit "戻る", name: "back", class: 'input-field' %></li>
+</ul>
+</div>
+<% end %>
