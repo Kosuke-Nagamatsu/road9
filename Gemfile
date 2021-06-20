@@ -40,6 +40,7 @@ gem 'mini_magick'
 gem 'mimemagic', '0.3.7'
 gem 'bcrypt'
 gem 'pry-rails'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

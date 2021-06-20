@@ -2,7 +2,7 @@
   <div class="top-content container-margin">
     <% @feeds.each do |feed| %>
       <ul>
-        <li><%= image_tag("#{feed.user.image.url}", size: '40x40', class: 'img-circle user-icon') %><%= "#{feed.user.name}さんの投稿" %></li>
+        <li><%= image_tag("#{feed.user.image.url}", size: '40x40', class: 'img-circle user-icon') %><%= "#{feed.user.name}" %></li>
         <li><%= link_to image_tag("#{feed.image.url}"), feed_path(feed) %></li>
         <% unless feed.user_id == current_user.id %>
           <% if feed.favorites.present? %>
